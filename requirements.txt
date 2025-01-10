@@ -2,7 +2,7 @@ datasets
 matplotlib
 torch
 torchvision
-tqdm==
+tqdm
 scikit-learn
 seaborn
 wandb
