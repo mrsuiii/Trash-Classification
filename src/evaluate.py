@@ -70,14 +70,8 @@ def final_eval(model, test_loader, criterion, device, best_model_path):
 if __name__ == "__main__":
     model = MiniVGG_BN()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    wandb.init(project = "Trash-Classification",
-           config = {
-               "epochs" : 25,
-               "batch_size" :64,
-               "learning_rate" : 0.001,
-               "architecture" : "CNN",
-               "num_classes" : 6
-           })
+    wandb.init(project = "Trash-Classification"
+           )
     _,_,test_loader = load_data(64)# use 64 as batch size
     avg_loss, accuracy, all_preds, all_labels = final_eval(
         model=model,

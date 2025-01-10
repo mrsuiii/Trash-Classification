@@ -93,13 +93,13 @@ if __name__ == "__main__":
    optimizer = optim.Adam(model.parameters(), lr = 0.0005)
    wandb.init(project = "Trash-Classification",
            config = {
-               "epochs" : 1,
+               "epochs" : 10,
                "batch_size" :32,
                "learning_rate" : 0.0005,
                "architecture" : "CNN",
                "num_classes" : 6
            })
-   train_model(model,train_loader,val_loader,optimizer,criterion,1,3,device=device)
+   train_model(model,train_loader,val_loader,optimizer,criterion,10,2,device=device)
    wandb.finish()
    
     
