@@ -74,7 +74,7 @@ def train_model(model, train_loader, val_loader, optimizer, criterion, epochs, p
       best_val_loss = val_loss
       epochs_no_improve = 0
       # Save the best model
-      torch.save(model.state_dict(), "best_model.pth")
+      torch.save(model.state_dict(), "weight/best_model.pth")
     else:
       epochs_no_improve +=1
       print(f"No improvement in validation loss. Patience counter: {epochs_no_improve}/{patience}")

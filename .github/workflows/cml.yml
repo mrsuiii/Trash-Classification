@@ -14,12 +14,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.8'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
@@ -30,3 +30,8 @@ jobs:
       run: |
         python src/train.py
         python src/evaluate.py
+    - name : Upload Model
+      uses: actions/upload-artifact@v4
+      with:
+        name: model
+        path: weight/best_model.pth
