@@ -89,7 +89,7 @@ if __name__ == "__main__":
         best_model_path="weight/best_model_6,5M0,2.pth"
     )
     print(f"Test Accuracy: {(accuracy*100):.2f}%, Test Loss: {avg_loss:.2f}")   
-    
+    wandb.finish()
     
 
     

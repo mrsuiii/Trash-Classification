@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - src/train.py
-      - src/evaluate.py
       - src/CNN.py
       - src/Dataset.py
       - weight/**
@@ -13,7 +12,6 @@ on:
     paths:
       - src/train.py
       - src/CNN.py
-      - src/evaluate.py
       - src/Dataset.py
       - weight/**
 
