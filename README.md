@@ -61,7 +61,7 @@ The dataset used in this project is the TrashNet dataset, available on Hugging F
 
 ## Model Architecture
 <div align="center">
-    <img src="architecture.png" alt="test-result">
+    <img src="architecture6.5M.png" alt="test-result">
 </div>
 The model used in this project is a Convolutional Neural Network (CNN) designed for image classification. First block was inspired by vgg architecture. 
 Each block of layers contain convolutional layer, each used batchnorm2d for batch normalization, ReLU for activation, and a maxpool. This model consists of total 6.5M parameters. It consists of the following layers:
