@@ -58,7 +58,7 @@ The dataset used in this project is the TrashNet dataset, available on Hugging F
     <img src="architecture6.5M.png" alt="test-result">
 </div>
 The model used in this project is a Convolutional Neural Network (CNN) designed for image classification. First block was inspired by vgg architecture. 
-Each block of layers contain convolutional layer, each used batchnorm2d for batch normalization, ReLU for activation, and a maxpool. This model consists of total 6.5M parameters. It consists of the following layers:
+Each block of layers contain convolutional layer, each used batchnorm2d for batch normalization, ReLU for activation, and a maxpool. This model consists of total 6.5M parameters and trained used 128 as mini-batch size. It consists of the following layers:
 
 1. Convolutional Layers: each block of layers contain convolutional layer, each used batchnorm2d for batch normalization and ReLU for activation. 
 
@@ -78,7 +78,11 @@ Each block of layers contain convolutional layer, each used batchnorm2d for batc
 
 7. Output Layer:
    The output layer consists of 6 neurons corresponding to the 6 classes in the TrashNet dataset.
-   
+## 2nd Model Architecture(further improvement)
+I have improved model above with 1 more layer and use average pooling in that last layer and change neuron number in fc1 also the dropout change to 0.3, but the default code in this project using first Architecture. if u want to use this improved model just make new .py from 
+reserve_architecture and change the model instance to it in evaluate and/or training depend on your need and you can load the weight in weight/minivgg6.8m.pth.
+This model give far more better val accuracy 0.81 which you can see on my wandb with link below.
+
 ## CI/CD
 I used github actions as tool for automating CI/CD process, if you want to push to main, must pass the automation test, Don't forget to set up you WANDB_API_KEY in repository setting.
 
