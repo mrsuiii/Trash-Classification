@@ -78,6 +78,7 @@ Each block of layers contain convolutional layer, each used batchnorm2d for batc
 
 7. Output Layer:
    The output layer consists of 6 neurons corresponding to the 6 classes in the TrashNet dataset.
+   
 ## 2nd Model Architecture(further improvement)
 I have improved model above with 1 more layer and use average pooling in that last layer and change neuron number in fc1 also the dropout change to 0.3, but the default code in this project using first Architecture. if u want to use this improved model just make new .py from 
 reserve_architecture and change the model instance to it in evaluate and/or training depend on your need and you can load the weight in weight/minivgg6.8m.pth.
