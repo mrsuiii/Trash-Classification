@@ -1,5 +1,5 @@
-datasets==3.2.0
-matplotlib==3.10.0
+datasets
+matplotlib
 torch==2.5.1
 torchvision==0.20.1
 tqdm==4.67.1
