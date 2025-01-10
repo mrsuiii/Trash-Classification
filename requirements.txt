@@ -8,3 +8,4 @@ seaborn==0.13.2
 wandb==0.19.1
 torchsummary==1.5.1
 numpy==1.26.4
+wandb[media]

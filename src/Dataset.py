@@ -2,7 +2,9 @@ from datasets import load_dataset
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms
 from torch.utils.data import random_split
-
+import torch
+import random
+import numpy as np
 class HFDatasetWrapper(Dataset):
     def __init__(self, hf_dataset, transform=None):
         self.hf_dataset = hf_dataset
@@ -19,13 +21,25 @@ class HFDatasetWrapper(Dataset):
             image = self.transform(image)
 
         return image, label
-    
+def set_seed(seed=42):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+
+
 def load_data(num_batch = 128):
     transform = transforms.Compose([
     transforms.Resize((224,224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
+    set_seed()
     dataset = load_dataset("garythung/trashnet",split = 'train')
     tensor_dataset = HFDatasetWrapper(dataset,transform)
     train_size = int(0.75 * len(tensor_dataset))
