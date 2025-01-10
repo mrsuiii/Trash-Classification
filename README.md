@@ -78,6 +78,10 @@ Each block of layers contain convolutional layer, each used batchnorm2d for batc
 
 7. Output Layer:
    The output layer consists of 6 neurons corresponding to the 6 classes in the TrashNet dataset.
+   
+## CI/CD
+I used github actions as tool for automating CI/CD process, if you want to push to main, must pass the automation test, Don't forget to set up you WANDB_API_KEY in repository setting.
+
 ##  Huggingface Repository
 This repository contains the trained model:
 

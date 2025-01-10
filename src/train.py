@@ -98,7 +98,7 @@ if __name__ == "__main__":
                "architecture" : "CNN",
                "num_classes" : 6
            })
-   train_model(model,train_loader,val_loader,optimizer,criterion,25,3)
+   train_model(model,train_loader,val_loader,optimizer,criterion,25,3,device=device)
    wandb.finish()
    
     
