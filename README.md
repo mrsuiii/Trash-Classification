@@ -6,35 +6,33 @@ This project involves training a Convolutional Neural Network (CNN) model to cla
     <img src="test_result.png" alt="test-result">
 </div>
 
-## 🛠️ Requirements
+##  Requirements
 
 To run this project, you will need:
-
-- Python
 - Jupyter Notebook
-- Huggingface for dataset
-- WandB AI for experiment tracking
-- PyTorch
+- Python
+- Pytorch
 - Scikit-learn
 - Matplotlib
 - Seaborn
+- Huggingface for dataset
+- WandB AI for experiment tracking
+- tqdm for tracking model training
 
 ## Setting Up
 This project uses Huggingface and WandB. To run the project, you need to set up your Huggingface token and WandB API key.
-### Huggingface
-1. Create an account at https://huggingface.co/.
-2. Get your token from Huggingface tokens page.
+
 ### WandB
 1. Create a WandB account at https://wandb.ai/.
 2. Get your API key by visiting https://wandb.ai/authorize.
 
-## 🚀 How to Run
+##  How to Run
 
 To run the model locally, you can follow these steps:
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/randyver/trash-classification.git
+git clone https://github.com/mrsuiii/Trash-Classification.git
 cd trash-classification
 ```
 
@@ -43,17 +41,13 @@ cd trash-classification
 pip install -r requirements.txt
 ```
 
-3. Login Huggingface and input your token:
-```bash
-huggingface-cli login
-```
 
-4. Execute the Jupyter notebook:
+3. Execute the Jupyter notebook:
 ```bash
 jupyter notebook notebook/trash_classification.ipynb
 ```
 
-5. When the program prompts for a wandb login, you will be required to input your wandb API key.
+4. When the program require an input for a wandb login, you will be required to input your wandb API key.
 
 ## Dataset
 
@@ -78,8 +72,10 @@ Each block of layers contain convolutional layer, each used batchnorm2d for batc
 
 5. Fully Connected Layers:
    After flattening the output from the last convolutional layer, the model passes it through two fully connected layers(fc1). The first fully connected layer has 256 neurons, and the second outputs the final class probabilities which is 6.
+
 6. Dropout:
    After fc1 we use dropout with rate 0.2   
+
 7. Output Layer:
    The output layer consists of 6 neurons corresponding to the 6 classes in the TrashNet dataset.
 ##  Huggingface Repository
@@ -87,7 +83,7 @@ This repository contains the trained model:
 
 https://huggingface.co/IHateStats/Trash-Classification-6.5M
 
-## 📈 WandB Model Tracking
+##  WandB Model Tracking
 This page contains experimental logs and graphs, including training and validation accuracy, as well as training and validation loss:
 
 https://wandb.ai/emeryzwageri-institut-teknologi-bandung/Trash-Classification
