@@ -7,7 +7,7 @@ import torch.nn as nn
 import torch.optim as optim
 import wandb
 from CNN import MiniVGG_BN
-
+import os
 
 def evaluate_model(model, val_loader, criterion, device):
     model.eval()
@@ -74,6 +74,7 @@ def train_model(model, train_loader, val_loader, optimizer, criterion, epochs, p
       best_val_loss = val_loss
       epochs_no_improve = 0
       # Save the best model
+      os.makedirs("weight", exist_ok=True)
       torch.save(model.state_dict(), "weight/best_model.pth")
     else:
       epochs_no_improve +=1
@@ -85,20 +86,20 @@ def train_model(model, train_loader, val_loader, optimizer, criterion, epochs, p
 
 if __name__ == "__main__":
    
-   train_loader,val_loader,test_loader = load_data(64)
+   train_loader,val_loader,test_loader = load_data(32)
    device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
    model = MiniVGG_BN().to(device)
    criterion = nn.CrossEntropyLoss()
    optimizer = optim.Adam(model.parameters(), lr = 0.0005)
    wandb.init(project = "Trash-Classification",
            config = {
-               "epochs" : 25,
-               "batch_size" :64,
-               "learning_rate" : 0.001,
+               "epochs" : 1,
+               "batch_size" :32,
+               "learning_rate" : 0.0005,
                "architecture" : "CNN",
                "num_classes" : 6
            })
-   train_model(model,train_loader,val_loader,optimizer,criterion,25,3,device=device)
+   train_model(model,train_loader,val_loader,optimizer,criterion,1,3,device=device)
    wandb.finish()
    
     

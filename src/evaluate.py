@@ -51,18 +51,16 @@ def final_eval(model, test_loader, criterion, device, best_model_path):
     # Calculate overall loss and accuracy
     avg_loss = total_loss / total_samples
     accuracy = total_correct / total_samples
-    cm = confusion_matrix(all_labels, all_preds)
     plt.figure(figsize=(9, 9))
+    cm = confusion_matrix(all_labels, all_preds)
     sns.heatmap(cm, annot=True, fmt="d", cmap='Blues')
     plt.title("Confusion Matrix")
-    plt.ylabel('Actual Label')
-    plt.xlabel('Predicted Label')
-    confusion_matrix_path = "report/confusion_matrix.png"
-    plt.savefig(confusion_matrix_path)
-    plt.show()
+    plt.ylabel("Actual Label")
+    plt.xlabel("Predicted Label")
 
-    # Log the confusion matrix image to Weights & Biases
-    wandb.log({"Confusion Matrix": wandb.Image(confusion_matrix_path)})
+    # Log image to wandb
+    wandb.log({"Confusion Matrix": wandb.Image(plt)})
+    plt.close()
     print(f"Test Loss: {avg_loss:.4f}, Test Accuracy: {accuracy:.4f}")
     print(classification_report(all_labels, all_preds))
     return avg_loss, accuracy, all_preds, all_labels
@@ -86,7 +84,7 @@ if __name__ == "__main__":
         test_loader=test_loader,
         criterion=torch.nn.CrossEntropyLoss(),
         device=device,
-        best_model_path="weight/best_model_6,5M0,2.pth"
+        best_model_path="weight/best_model.pth"
     )
     print(f"Test Accuracy: {(accuracy*100):.2f}%, Test Loss: {avg_loss:.2f}")   
     wandb.finish()
